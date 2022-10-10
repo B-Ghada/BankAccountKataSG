@@ -18,6 +18,9 @@ public class AccountTest {
     Transaction validWithdrawalTransaction = new Transaction(LocalDate.now(),
             TransactionType.WITHDRAW, BigDecimal.valueOf(200), BigDecimal.valueOf(200));
 
+    Transaction validDepositTransaction = new Transaction(LocalDate.now(),
+            TransactionType.DEPOSIT, BigDecimal.valueOf(200), BigDecimal.valueOf(200));
+
     @BeforeEach
     void init() {
         account = new Account(transactionRepository);
@@ -25,7 +28,7 @@ public class AccountTest {
 
 
     @Test
-    void verifyAccountBalanceWhenWithdraw200() {
+    void should_return_balance_minus_200_when_withdrawal_of_amount_200() {
         //given
         BigDecimal amount = new BigDecimal("200");
         TransactionType type = TransactionType.WITHDRAW;
@@ -38,13 +41,13 @@ public class AccountTest {
     }
 
     @Test
-    void verifyAccountBalanceWhenDeposit200() {
+    void should_return_balance_200_when_deposit_of_amount_200() {
         //given
         BigDecimal amount = new BigDecimal("200");
         TransactionType type = TransactionType.DEPOSIT;
         //when
         when(transactionRepository.createTransaction(any(), any(), any(), any()))
-                .thenReturn(validWithdrawalTransaction);
+                .thenReturn(validDepositTransaction);
         account.createTransaction(amount, type);
         //should
         assertEquals(BigDecimal.valueOf(200), account.getAccountBalance());
@@ -52,14 +55,14 @@ public class AccountTest {
 
 
     @Test
-    void verifyNumberOfWidhdrawals() {
+    void number_of_withdraw_created_should_be_1_when_one_withdrawal_operationn_is_done() {
         account.createTransaction(BigDecimal.valueOf(100), TransactionType.WITHDRAW);
         verify(transactionRepository, times(1)).createTransaction(LocalDate.now(),
                 BigDecimal.valueOf(-100), TransactionType.WITHDRAW, BigDecimal.valueOf(-100));
     }
 
     @Test
-    void verifyNumberOfDeposits() {
+    void number_of_deposit_created_should_be_1_when_one_deposit_operation_is_done() {
         account.createTransaction(BigDecimal.valueOf(100), TransactionType.DEPOSIT);
         verify(transactionRepository, times(1)).createTransaction(LocalDate.now(),
                 BigDecimal.valueOf(100), TransactionType.DEPOSIT, BigDecimal.valueOf(100));
