@@ -1,11 +1,9 @@
-package test;
 
-import main.Account;
-import main.transaction.Transaction;
-import main.transaction.TransactionRepository;
-import main.transaction.TransactionType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import transaction.Transaction;
+import transaction.TransactionRepository;
+import transaction.TransactionType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

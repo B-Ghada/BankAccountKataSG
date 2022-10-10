@@ -1,7 +1,5 @@
-package main;
-
-import main.transaction.TransactionRepository;
-import main.transaction.TransactionType;
+import transaction.TransactionRepository;
+import transaction.TransactionType;
 
 import static java.math.BigDecimal.valueOf;
 
@@ -14,8 +12,6 @@ public class BankAccountGenerator {
         account.createTransaction(valueOf(1200), TransactionType.DEPOSIT);
         account.createTransaction(valueOf(50), TransactionType.WITHDRAW);
 
-        account.printStatement();
-        System.out.println("\n#######");
         account.printStatement();
     }
 }

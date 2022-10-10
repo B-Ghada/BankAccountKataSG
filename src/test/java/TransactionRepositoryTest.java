@@ -1,8 +1,6 @@
-package test;
-
-import main.transaction.Transaction;
-import main.transaction.TransactionRepository;
-import main.transaction.TransactionType;
+import transaction.Transaction;
+import transaction.TransactionRepository;
+import transaction.TransactionType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

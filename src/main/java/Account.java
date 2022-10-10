@@ -1,7 +1,6 @@
-package main;
 
 
-import main.transaction.*;
+import transaction.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
