@@ -30,8 +30,6 @@ public class Transaction {
         this.transactionType = type;
         this.transactionAmount = amount;
         this.postTransactionBalance = postTransactionBalance;
-
-
     }
 
     public String formatDate(LocalDate date) {
